@@ -87,27 +87,14 @@ AppAsset::register($this);
             </div>
             <!-- /.navbar-header -->
             <?php
-                // echo Nav::widget([
-                //     'options' => ['class' => 'navbar-nav navbar-right'],
-                //     'items' => [
-                //         ['label' => 'Home', 'url' => ['/site/index']],
-                //         ['label' => 'About', 'url' => ['/site/about']],
-                //         ['label' => 'Contact', 'url' => ['/site/contact']],
-                //         Yii::$app->user->isGuest ? (
-                //             ['label' => 'Login', 'url' => ['/site/login']]
-                //         ) : ['label' => 'Logout', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']]
-                //     ],
-                // ]);
-            ?>
-            <?php
                 if (!Yii::$app->user->isGuest) {
             ?>
             <div class="navbar-right ">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?php echo $this->theme->baseUrl ?>/images/noimg.jpg" width="50%" id="img_cycle2" alt=""/></div> Administrator </div></a>
             <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
+                        <li><a href="?r=member/profile"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
+                        <li><a href="?r=setting"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="<?= Url::to(['site/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
