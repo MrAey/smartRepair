@@ -102,7 +102,18 @@ AppAsset::register($this);
             <?php
                 if (!Yii::$app->user->isGuest) {
             ?>
-            <a href="#"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?php echo $this->theme->baseUrl ?>/images/noimg.jpg" id="img_cycle2" alt=""/></div> Administrator </div></a>
+            <div class="navbar-right ">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?php echo $this->theme->baseUrl ?>/images/noimg.jpg" width="50%" id="img_cycle2" alt=""/></div> Administrator </div></a>
+            <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="<?= Url::to(['site/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
+                        </li>
+                    </ul>
+            </div>
             <?php } ?>
             <!-- /.navbar-top-links -->
             <div class="navbar-default sidebar" role="navigation">
