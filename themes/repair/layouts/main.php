@@ -106,13 +106,14 @@ AppAsset::register($this);
             <?php } ?>
             <!-- /.navbar-top-links -->
             <div class="navbar-default sidebar" role="navigation">
-              <div class="sidebar-nav navbar-collapse">
+              <div class="sidebar-nav navbar-collapse collapse">
                     <ul class="nav" id="side-menu">
                        <li><a href="index.php" <?php if(@addslashes($_GET['r']) == ""){ echo 'class="active"';}?>><i class="fa fa-home fa-fw"></i> หน้าแรก </a></li>
                        <?php
                         if (!Yii::$app->user->isGuest){
                        ?>
-                       <li><a href="?r=card/create" <?php if(@addslashes($_GET['r']) == "card/create"){ echo 'class="active"';}?>><i class="fa fa-edit fa-fw"></i> ส่งซ่อม </a></li>
+                       <li><a href="?r=card/create" <?php if(@addslashes($_GET['r']) == "computer"){ echo 'class="active"';}?>><i class="fa fa-desktop fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์ </a></li>
+                       <li><a href="?r=card/create" <?php if(@addslashes($_GET['r']) == "card/create"){ echo 'class="active"';}?>><i class="fa fa-edit fa-fw"></i> เขียนใบส่งซ่อม </a></li>
                        <li><a href="?r=card/report" <?php if(@addslashes($_GET['r']) == "card/report"){ echo 'class="active"';}?>><i class="fa fa-list fa-fw"></i> รายการส่งซ่อม</a></li>
                        <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก </a></li>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
