@@ -129,7 +129,7 @@ AppAsset::register($this);
                        <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก </a></li>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
                        <li><a href="?r=setting" <?php if(@addslashes($_GET['r']) == "setting"){ echo 'class="active"';}?>><i class="fa fa-gear  fa-fw"></i> ตั้งค่า </a></li>
-                       <li><a href="<?= Url::to(['site/logout'])?>" data-method="post"><i class="fa fa-lock fa-fw"></i> ออกจากระบบ </a></li>
+                       <li><a href="<?= Url::to(['site/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ </a></li>
                        <?php } else {
                             echo '<li><a href="?r=site/login" ';
                             if(@addslashes($_GET['r']) == "site/login"){ echo 'class="active"';}
