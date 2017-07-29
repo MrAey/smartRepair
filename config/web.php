@@ -8,6 +8,14 @@ $config = [
     'basePath' => dirname(__DIR__),
     'name' => 'Smart Repair System',
     'bootstrap' => ['log'],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableConfirmation' => false,
+            'cost' => 12,
+            'admins' => ['admin']
+        ],
+    ],
     'components' => [
     	'view' => [
             'class' => 'yii\web\View',
@@ -24,10 +32,10 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
+        // 'user' => [
+        //     'identityClass' => 'app\models\User',
+        //     'enableAutoLogin' => true,
+        // ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
