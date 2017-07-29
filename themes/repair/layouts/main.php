@@ -1,11 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\assets\AppAsset;
+use app\themes\repair\RepairAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 
-AppAsset::register($this);
+RepairAsset::register($this);
+$asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/assets'); 
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
@@ -22,50 +23,6 @@ AppAsset::register($this);
     <title><?php echo Html::encode($this->title); ?></title>
     <?php $this->head(); ?>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $this->theme->baseUrl ?>/css/datepicker.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Timeline CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/plugins/timeline.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/sb-admin-2.css" rel="stylesheet">
-    <link href="<?php echo $this->theme->baseUrl ?>/css/bootstrap-combobox.css" rel="stylesheet">
-    <link href="<?php echo $this->theme->baseUrl ?>/css/bootstrap-colorpicker.min.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?php echo $this->theme->baseUrl ?>/css/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="<?php echo $this->theme->baseUrl ?>/css/iconset/ios7-set-filled-1/flaticon.css" rel="stylesheet" type="text/css">
-    <!-- <link rel="shortcut icon" href="../media/favicon/<?php echo @$system_info->site_favicon;?>"/> -->
-    <link rel="stylesheet" href="<?php echo $this->theme->baseUrl ?>/css/selectize.default.css">
-
-    <!-- jQuery Version 1.11.0 -->
-    <script src="<?php echo $this->theme->baseUrl ?>/js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo $this->theme->baseUrl ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/bootstrap-datepicker.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo $this->theme->baseUrl ?>./js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    
-    <script src="<?php echo $this->theme->baseUrl ?>/js/plugins/morris/raphael.min.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/plugins/morris/morris.min.js"></script>
-   
-
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo $this->theme->baseUrl ?>/js/sb-admin-2.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/bootstrap-combobox.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/bootstrap-colorpicker.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/latest/typeahead.bundle.js"></script>
-    <script src="<?php echo $this->theme->baseUrl ?>/js/standalone/selectize.js"></script>
 
 </head>
 
@@ -90,7 +47,7 @@ AppAsset::register($this);
                 if (!Yii::$app->user->isGuest) {
             ?>
             <div class="navbar-right ">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?php echo $this->theme->baseUrl ?>/images/noimg.jpg" width="50%" id="img_cycle2" alt=""/></div> Administrator </div></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?= $asset_path; ?>/images/noimg.jpg" width="50%" id="img_cycle2" alt=""/></div> Administrator </div></a>
             <ul class="dropdown-menu dropdown-user">
                         <li><a href="?r=member/profile"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
                         </li>

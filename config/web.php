@@ -13,8 +13,8 @@ $config = [
             'class' => 'yii\web\View',
             'theme' => [
               'class' => 'yii\base\Theme',
-              'pathMap' => ['@app/views' => '../themes/repair'],
-              'baseUrl'   => '../themes/repair',
+              'pathMap' => ['@app/views' => '@app/themes/repair'],
+              'baseUrl'   => '@app/themes/repair',
             ],
         ],
         'request' => [
