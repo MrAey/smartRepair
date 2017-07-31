@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\AssetAstatus;
 
 /**
  * This is the model class for table "asset_master".
@@ -96,5 +97,10 @@ class AssetMaster extends \yii\db\ActiveRecord
             'pict_path' => 'Pict Path',
             'a_status' => 'A Status',
         ];
+    }
+
+    function getAstatus() 
+    {
+         return $this->hasOne(AssetAstatus::className(), ['a_status'=>'a_status']);
     }
 }
