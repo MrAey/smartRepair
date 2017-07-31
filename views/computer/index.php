@@ -20,8 +20,8 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
        'dataProvider' => $dataProvider,
        'filterModel' => $searchModel,
        'columns' => [
-           // ['class' => 'yii\grid\SerialColumn'],
-           'code',
+           ['class' => 'yii\grid\SerialColumn'],
+           // 'code',
            'sap_code',
            // 'budget_year',
            // 'regis_date',
