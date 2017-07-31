@@ -12,20 +12,19 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
             <h1 class="page-header"><i class="fa fa-desktop fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์</h1>
     </div>       
 <div class="asset-master-index">
-   <h1><?= Html::encode($this->title) ?></h1>
    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
    <p>
-       <?= Html::a(Yii::t('app', 'Create Asset Master'), ['create'], ['class' => 'btn btn-success']) ?>
+       <?= Html::a(Yii::t('app', '<i class="fa fa-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์'), ['create'], ['class' => 'btn btn-success']) ?>
    </p>
    <?= GridView::widget([
        'dataProvider' => $dataProvider,
        'filterModel' => $searchModel,
        'columns' => [
-           ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
            'code',
            'sap_code',
            'budget_year',
-           'regis_date',
+           // 'regis_date',
            'aname',
            // 'dept',
            // 'positions',
