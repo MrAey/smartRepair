@@ -38,6 +38,8 @@ class ComputerController extends Controller
         $searchModel = new AssetMasterSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->pagination->pageSize=15;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

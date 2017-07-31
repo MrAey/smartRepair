@@ -23,7 +23,7 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
            // ['class' => 'yii\grid\SerialColumn'],
            'code',
            'sap_code',
-           'budget_year',
+           // 'budget_year',
            // 'regis_date',
            'aname',
            // 'dept',
@@ -45,6 +45,12 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
            // 'asset_note:ntext',
            // 'pict_path',
            // 'a_status',
+           [
+           	'attribute' => 'a_status',
+           	'value' => function ($model){
+			           		return $model->astatus->descriptions;
+			           }
+           ],
            ['class' => 'yii\grid\ActionColumn'],
        ],
    ]); ?>
