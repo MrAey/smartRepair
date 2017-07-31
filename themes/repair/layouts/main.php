@@ -49,12 +49,12 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
             <div class="navbar-right ">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div class="box_user_right"><div class="box_img_cycle2"><img src="<?= $asset_path; ?>/images/noimg.jpg" width="50%" id="img_cycle2" alt=""/></div> <?= Yii::$app->user->identity->username; ?> </div></a>
             <ul class="dropdown-menu dropdown-user">
-                        <li><a href="?r=member/profile"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
+                        <li><a href="?r=user/settings/profile"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
                         </li>
                         <li><a href="?r=setting"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?= Url::to(['site/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
+                        <li><a href="<?= Url::to(['/user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
                         </li>
                     </ul>
             </div>
@@ -73,7 +73,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                        <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก </a></li>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
                        <li><a href="?r=setting" <?php if(@addslashes($_GET['r']) == "setting"){ echo 'class="active"';}?>><i class="fa fa-gear  fa-fw"></i> ตั้งค่า </a></li>
-                       <li><a href="<?= Url::to(['user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ </a></li>
+                       <li><a href="<?= Url::to(['/user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ </a></li>
                        <?php } else {
                             echo '<li><a href="?r=user/security/login" ';
                             if(@addslashes($_GET['r']) == "user/security/login"){ echo 'class="active"';}

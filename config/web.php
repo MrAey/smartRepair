@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'name' => 'Smart Repair System',
+    'language' => 'th_TH',
     'bootstrap' => ['log'],
     'modules' => [
         'user' => [
