@@ -89,8 +89,8 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
 
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="margin_top">
-                <div class="col-lg-12">
+            <div class="row margin_top">
+                <div class="col-lg-12"><p></p>
                   <?php echo $content; ?>
                 </div>
             </div>
