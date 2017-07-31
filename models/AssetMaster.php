@@ -75,7 +75,7 @@ class AssetMaster extends \yii\db\ActiveRecord
             'code' => 'Code',
             'sap_code' => 'หมายเลขครุภัณฑ์',
             'budget_year' => 'ปีที่ซื้อ',
-            'regis_date' => 'Regis Date',
+            'regis_date' => 'วันที่ลงทะเบียนครุภัณฑ์',
             'aname' => 'ชื่อครุภัณฑ์',
             'dept' => 'ฝ่าย',
             'positions' => 'สถานที่ตั้ง',
