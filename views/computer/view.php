@@ -39,8 +39,23 @@ $this->title = $model->code;
             'positions',
             'floorno',
             'roomno',
-            'groupid',
-            'catagory',
+            [
+                'attribute' => 'groupid',
+                'value' => function ($model){
+                            return $model->group->description;
+                }
+            ],
+            [
+                'attribute' => 'catagory',
+                'value' => function ($model){
+                            $catagory = app\models\AssetAcatagory::find()
+                            ->where(['=','groupid',$model['groupid']])
+                            ->andWhere(['=','catagory',$model['catagory']])
+                            ->one();
+
+                            return $catagory['descriptions'];
+                }
+            ],
             'brand',
             'asize',
             'model',
@@ -53,7 +68,12 @@ $this->title = $model->code;
             'bud_id',
             'asset_note:ntext',
             'pict_path',
-            'a_status',
+            [
+                'attribute' => 'a_status',
+                'value' => function ($model){
+                            return $model->astatus->descriptions;
+                }
+            ],
         ],
     ]) ?>
 

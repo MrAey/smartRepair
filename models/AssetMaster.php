@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 use app\models\AssetAstatus;
+use app\models\AssetGroup;
+use app\models\AssetAcatagory;
 
 /**
  * This is the model class for table "asset_master".
@@ -77,7 +79,7 @@ class AssetMaster extends \yii\db\ActiveRecord
             'budget_year' => 'ปีที่ซื้อ',
             'regis_date' => 'วันที่ลงทะเบียนครุภัณฑ์',
             'aname' => 'ชื่อครุภัณฑ์',
-            'dept' => 'ฝ่าย',
+            'dept' => 'งาน',
             'positions' => 'สถานที่ตั้ง',
             'floorno' => 'ชั้น',
             'roomno' => 'ห้อง',
@@ -90,7 +92,7 @@ class AssetMaster extends \yii\db\ActiveRecord
             'price' => 'ราคา',
             'pur_date' => 'วันที่ซื้อ',
             'doc_no' => 'เลขใบเสนอราคา',
-            'pur_docno' => 'เลขใบสั่งซื้อ',
+            'pur_docno' => 'เลขใบส่งของ',
             'receive_date' => 'วันที่รับเข้า',
             'bud_id' => 'งบประมาณ',
             'asset_note' => 'หมายเหตุ',
@@ -102,5 +104,15 @@ class AssetMaster extends \yii\db\ActiveRecord
     function getAstatus() 
     {
          return $this->hasOne(AssetAstatus::className(), ['a_status'=>'a_status']);
+    }
+
+    function getGroup() 
+    {
+         return $this->hasOne(AssetGroup::className(), ['groupid'=>'groupid']);
+    }
+
+    public function getAcatagory()
+    {
+        return $this->hasOne(AssetAcatagory::className(), ['catagory' => 'catagory']);
     }
 }
