@@ -1,7 +1,8 @@
 <?php
  
 use yii\helpers\Html; 
-use yii\grid\GridView; 
+use yii\grid\GridView;
+use yii\helpers\ArrayHelper; 
  
 /* @var $this yii\web\View */
 $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
@@ -56,6 +57,7 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
            // 'a_status',
            [
            	'attribute' => 'a_status',
+            'filter' => ArrayHelper::map(app\models\AssetAstatus::find()->asArray()->all(), 'a_status', 'descriptions'),
            	'value' => function ($model){
 			           		return $model->astatus->descriptions;
 			           }
