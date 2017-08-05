@@ -123,7 +123,7 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
            [   'class' => 'yii\grid\ActionColumn', 
                 'template' => '{view} {update} {delete}',
                 'headerOptions' => ['width' => '12%', 'class' => 'activity-view-link',],        
-                    'contentOptions' => ['class' => 'padding-left-5px', 'align' => 'middle'],
+                    'contentOptions' => ['class' => 'padding-left-5px', 'align' => 'middle', 'noWrap' => true],
 
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
