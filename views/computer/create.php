@@ -17,7 +17,7 @@ $this->title = Yii::t('app', 'Create Asset Master');
 	            <h1 class="page-header"><i class="fa fa-plus fa-fw"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์</h1>
 	    </div>
 	</div>  
-	<div class="row">
+<!-- 	<div class="row">
 	    <div class="col-lg-12">
 	        <ol class="breadcrumb">
 	            <li><a href="index.php">หน้าแรก</a></li>
@@ -25,7 +25,7 @@ $this->title = Yii::t('app', 'Create Asset Master');
 	            <li class="active">เพิ่มครุภัณฑ์คอมพิวเตอร์</li>
 	        </ol>
 	    </div>
-	</div>
+	</div> -->
 
     <?= $this->render('_form', [
         'model' => $model,

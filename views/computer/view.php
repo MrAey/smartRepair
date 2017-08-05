@@ -17,7 +17,7 @@ $this->title = $model->code;
             <h1 class="page-header"><i class="fa fa-th-list fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์ : <?=$model->sap_code;?></h1>
     </div>
 </div> 
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-12">
         <ol class="breadcrumb">
             <li><a href="index.php">หน้าแรก</a></li>
@@ -25,7 +25,7 @@ $this->title = $model->code;
             <li class="active">แสดงข้อมูลครุภัณฑ์คอมพิวเตอร์</li>
         </ol>
     </div>
-</div>  
+</div>  --> 
 
     <?= DetailView::widget([
         'model' => $model,

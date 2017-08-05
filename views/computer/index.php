@@ -1,6 +1,8 @@
 <?php
  
 use yii\helpers\Html; 
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper; 
  
@@ -14,18 +16,73 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
     </div>
 </div>       
 <div class="asset-master-index">
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-lg-12">
           <ol class="breadcrumb">
               <li><a href="index.php">หน้าแรก</a></li>
               <li class="active">ครุภัณฑ์คอมพิวเตอร์</li>
           </ol>
       </div>
-  </div>
+  </div> -->
    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
    <p>
-       <?= Html::a(Yii::t('app', '<i class="fa fa-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์'), ['create'], ['class' => 'btn btn-success']) ?>
+       <?= Html::button('<i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์',['value'=>  Url::to('index.php?r=computer/create'),'class' => 'btn btn-success','id'=>'modalButton']) ?>
    </p>
+   <?php
+        Modal::begin([
+            // 'header'=>'<h4><i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์</h4>',
+            'id'=>'modal',
+            'size'=>'modal-lg',
+            'options'=>['tabindex' => false],
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+        ]);
+        echo "<div id='modalContent'></div>";
+        Modal::end();
+
+        Modal::begin([
+            // 'header' => ' Detail',
+            'id' => 'modalView',
+            'size' => 'modal-md',
+            'options'=>['tabindex' => false],
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+        ]);
+
+        Modal::end();
+        $this->registerJS("$('#modalView').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title')
+            var href = button.attr('href')
+            modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('')
+            $.post(href)
+            .done(function( data ) {
+            modal.find('.modal-body').html(data)
+            });
+        });",\yii\web\View::POS_READY);
+
+        Modal::begin([
+            // 'header' => ' Update',
+            'id' => 'modalUpdate',
+            'size' => 'modal-lg',
+            'options'=>['tabindex' => false],
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+        ]);
+
+        Modal::end();
+        $this->registerJS("$('#modalUpdate').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget)
+            var modal = $(this)
+            var title = button.data('title')
+            var href = button.attr('href')
+            modal.find('.modal-title').html(title)
+            modal.find('.modal-body').html('')
+            $.post(href)
+            .done(function( data ) {
+            modal.find('.modal-body').html(data)
+            });
+        });",\yii\web\View::POS_READY);
+    ?>  
    <?= GridView::widget([
        'dataProvider' => $dataProvider,
        'filterModel' => $searchModel,
@@ -62,7 +119,41 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
 			           		return $model->astatus->descriptions;
 			           }
            ],
-           ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
+           [   'class' => 'yii\grid\ActionColumn', 
+                'template' => '{view} {update} {delete}',
+                'headerOptions' => ['width' => '12%', 'class' => 'activity-view-link',],        
+                    'contentOptions' => ['class' => 'padding-left-5px', 'align' => 'middle'],
+
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                        return Html::a(
+                        '<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                        'class' => 'btn btn-info btn-xs',
+                        'data-toggle' => 'modal', 'data-target' => '#modalView',
+                        'data-title' => 'Detail Data']
+                        );
+                    },
+                    'update' => function ($url, $model, $key) {
+                        return Html::a(
+                        '<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                        'class' => 'btn btn-success btn-xs',
+                        'data-toggle' => 'modal', 'data-target' => '#modalUpdate',
+                        'data-title' => 'Update Data']
+                        );
+                    },
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a(
+                        '<span class="glyphicon glyphicon-trash"></span>', $url, [
+                        'class' => 'btn btn-danger btn-xs',
+                        'data-toggle' => 'modal', 'data-target' => '#modalDelete',
+                        'data-title' => 'Update Data']
+                        );
+                    },
+                ],
+
+
+            ],
        ],
    ]); ?>
 </div>

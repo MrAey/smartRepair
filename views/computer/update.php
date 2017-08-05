@@ -19,7 +19,7 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
 	            <h1 class="page-header"><i class="fa fa-pencil fa-fw"></i> แก้ไขครุภัณฑ์คอมพิวเตอร์ : <?=$model->sap_code;?></h1>
 	    </div>
 	</div>   
-	<div class="row">
+	<!-- <div class="row">
 	    <div class="col-lg-12">
 	        <ol class="breadcrumb">
 	            <li><a href="index.php">หน้าแรก</a></li>
@@ -27,7 +27,7 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
 	            <li class="active">แก้ไขครุภัณฑ์คอมพิวเตอร์</li>
 	        </ol>
 	    </div>
-	</div>
+	</div> -->
 
     <?= $this->render('_form', [
         'model' => $model,

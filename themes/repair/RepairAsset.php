@@ -33,7 +33,8 @@ class RepairAsset extends AssetBundle{
 		// 'js/bootstrap-combobox.js',
 		// 'js/bootstrap-colorpicker.js',
 		// 'js/latest/typeahead.bundle.js',
-		// 'js/standalone/selectize.js'
+		// 'js/standalone/selectize.js',
+		'js/main.js',
 	]; 
 
 	public $depends = [ 
