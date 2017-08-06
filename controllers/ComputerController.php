@@ -23,7 +23,7 @@ class ComputerController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['GET'],
                 ],
             ],
         ];
@@ -68,7 +68,8 @@ class ComputerController extends Controller
         $model = new AssetMaster();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->code]);
+            // return $this->redirect(['view', 'id' => $model->code]);
+            return $this->redirect(['index']);
         } else {
             return $this->renderAjax('create', [
                 'model' => $model,
@@ -87,7 +88,8 @@ class ComputerController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->code]);
+            // return $this->redirect(['view', 'id' => $model->code]);
+            return $this->redirect(['index']);
         } else {
             return $this->renderAjax('update', [
                 'model' => $model,

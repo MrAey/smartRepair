@@ -82,6 +82,33 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
             modal.find('.modal-body').html(data)
             });
         });",\yii\web\View::POS_READY);
+
+        Modal::begin([
+            'header' => '<h2 class="modal-title"></h2>',
+            'id' => 'modalDelete',
+            'size' => 'modal-md',
+            'options'=>['tabindex' => false],
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE],
+            'footer' => Html::a('ยืนยันลบ', '', ['class' => 'btn btn-danger', 'id' => 'delete-confirm']). '<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>'
+        ]);
+        echo "<center><h3>คุณแน่ใจที่จะลบครุภัณฑ์นี้ ? </h3></center>";
+        Modal::end();
+        $this->registerJS("$(function() {
+            $('.popup-modal').click(function(e) {
+                e.preventDefault();
+                var modal = $('#modalDelete').on('show');
+                modal.find('.modal-body').load($('.modal-dialog'));
+                var that = $(this);
+                var id = that.data('id');
+                var name = that.data('name');
+                modal.find('.modal-title').text('ครุภัณฑ์คอมพิวเตอร์ :  \"' + name + '\"');
+
+                $('#delete-confirm').click(function(e) {
+                    e.preventDefault();
+                    window.location = 'index.php?r=computer/delete&id='+id;
+                });
+            });
+        });",\yii\web\View::POS_READY);
     ?>  
    <?= GridView::widget([
        'dataProvider' => $dataProvider,
@@ -119,7 +146,6 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
 			           		return $model->astatus->descriptions;
 			           }
            ],
-           // ['class' => 'yii\grid\ActionColumn'],
            [   'class' => 'yii\grid\ActionColumn', 
                 'template' => '{view} {update} {delete}',
                 'headerOptions' => ['width' => '12%', 'class' => 'activity-view-link',],        
@@ -144,10 +170,11 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
                     },
                     'delete' => function ($url, $model, $key) {
                         return Html::a(
-                        '<span class="glyphicon glyphicon-trash"></span>', $url, [
-                        'class' => 'btn btn-danger btn-xs',
+                        '', $url, [
+                        'class' => 'btn btn-danger btn-xs glyphicon glyphicon-trash popup-modal',
                         'data-toggle' => 'modal', 'data-target' => '#modalDelete',
-                        'data-title' => 'Update Data']
+                        'data-id'     => $model->code,'data-name'   => $model->sap_code,
+                        'data-title' => 'Delete Data','id' => 'popupModal']
                         );
                     },
                 ],
