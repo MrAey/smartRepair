@@ -53,7 +53,7 @@ $this->title = Yii::$app->name;
                                 <i class="fa fa-desktop fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">0</div>
+                                <div class="huge"><?=$compCount;?></div>
                                 <div>ครุภัณฑ์คอมพิวเตอร์</div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ $this->title = Yii::$app->name;
                                 <i class="fa fa-tags fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">0</div>
+                                <div class="huge"><?=$statusCount;?></div>
                                 <div>สถานะจำหน่าย</div>
                             </div>
                         </div>

@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\AssetMaster;
 
 class SiteController extends Controller
 {
@@ -61,7 +62,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $compCount = AssetMaster::find()
+        ->select(['COUNT(*) AS cnt'])
+        ->where('groupid = "03"')
+        ->scalar();
+
+        $statusCount = AssetMaster::find()
+        ->select(['COUNT(*) AS cnt'])
+        ->where('a_status = 5')
+        ->scalar();
+
+        return $this->render('index',[
+            'compCount'     => $compCount,
+            'statusCount'   => $statusCount,
+        ]);
     }
 
     /**
