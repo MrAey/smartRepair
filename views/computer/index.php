@@ -30,7 +30,8 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
    </p>
    <?php
         Modal::begin([
-            // 'header'=>'<h4><i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์</h4>',
+            'header'=>'',
+            'headerOptions' => ['style' => 'background: #428bca;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
             'id'=>'modal',
             'size'=>'modal-lg',
             'options'=>['tabindex' => false],
@@ -40,7 +41,8 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
         Modal::end();
 
         Modal::begin([
-            // 'header' => ' Detail',
+            'header' => '',
+            'headerOptions' => ['style' => 'background: #5bc0de;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
             'id' => 'modalView',
             'size' => 'modal-md',
             'options'=>['tabindex' => false],
@@ -62,7 +64,8 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
         });",\yii\web\View::POS_READY);
 
         Modal::begin([
-            // 'header' => ' Update',
+            'header' => '',
+            'headerOptions' => ['style' => 'background: #5cb85c;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
             'id' => 'modalUpdate',
             'size' => 'modal-lg',
             'options'=>['tabindex' => false],
@@ -85,6 +88,7 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
 
         Modal::begin([
             'header' => '<h2 class="modal-title"></h2>',
+            'headerOptions' => ['style' => 'color:#fff;background: #d9534f;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
             'id' => 'modalDelete',
             'size' => 'modal-md',
             'options'=>['tabindex' => false],
