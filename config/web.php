@@ -18,6 +18,13 @@ $config = [
         ],
     ],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'js' => ['js/bootstrap.js'],
+                ]
+            ]
+        ],
     	'view' => [
             'class' => 'yii\web\View',
             'theme' => [
