@@ -69,6 +69,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', '<i class="fa fa-save"></i> บันทึก') : Yii::t('app', '<i class="fa fa-save"></i> บันทึก'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
     </div>
 
     <?php ActiveForm::end(); ?>
