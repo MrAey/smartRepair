@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
@@ -28,11 +29,24 @@ use yii\helpers\ArrayHelper;
     <div class="row">
         <div class="col-md-4"><?= $form->field($model, 'floorno')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-4"><?= $form->field($model, 'roomno')->textInput(['maxlength' => true]) ?></div>
-        <div class="col-md-4"><?= $form->field($model, 'groupid')->dropDownList(ArrayHelper::map(app\models\AssetGroup::find()->asArray()->all(), 'groupid', 'description'),['prompt'=>'--เลือกประเภทครุภัณฑ์--']) ?></div>
+        <div class="col-md-4"><?= $form->field($model, 'groupid')->dropDownList(ArrayHelper::map(app\models\AssetGroup::find()->asArray()->all(), 'groupid', 'description'),[
+                'prompt'=>'--เลือกประเภทครุภัณฑ์--',
+                'onchange'=>'
+             $.get( "'.Url::toRoute('catagory/lists').'", { id: $(this).val() } )
+                            .done(function( data )
+                   {
+                              $( "select#catagory" ).html( data );
+                            });
+                        ' 
+            ]) ?>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-4"><?= $form->field($model, 'catagory')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-md-4"><?= $form->field($model, 'catagory')->dropDownList($model->isNewRecord ? ['0'=>''] : ArrayHelper::map(app\models\AssetAcatagory::find()->asArray()->all(), 'catagory', 'descriptions'),[
+                'prompt'=>'--เลือกหมวดครุภัณฑ์--',
+                'id' => 'catagory'
+            ]) ?></div>
         <div class="col-md-4"><?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-4"><?= $form->field($model, 'asize')->textInput(['maxlength' => true]) ?></div>
     </div>
@@ -69,7 +83,7 @@ use yii\helpers\ArrayHelper;
     
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', '<i class="fa fa-save"></i> บันทึก') : Yii::t('app', '<i class="fa fa-save"></i> บันทึก'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', '<i class="fa fa-save"></i> บันทึก') : Yii::t('app', '<i class="fa fa-save"></i> บันทึกแก้ไข'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
     </div>
 
