@@ -8,6 +8,8 @@ use app\models\AssetMasterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use dektrium\user\filters\AccessRule;
 
 /**
  * ComputerController implements the CRUD actions for AssetMaster model.
@@ -26,6 +28,18 @@ class ComputerController extends Controller
                     'delete' => ['GET'],
                 ],
             ],
+            // 'access' => [
+            //     'class' => AccessControl::className(),
+            //     'ruleConfig' => [
+            //         'class' => AccessRule::className(),
+            //     ],
+            //     'rules' => [
+            //         [
+            //             'allow' => true,
+            //             'roles' => ['admin'],
+            //         ],
+            //     ],
+            // ],
         ];
     }
 

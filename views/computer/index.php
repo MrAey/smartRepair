@@ -26,7 +26,9 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
   </div> -->
    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
    <p>
-       <?= Html::button('<i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์',['value'=>  Url::to('index.php?r=computer/create'),'class' => 'btn btn-success','id'=>'modalButton']) ?>
+       <?php
+        if (Yii::$app->user->identity->isAdmin){ 
+            echo Html::button('<i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์',['value'=>  Url::to('index.php?r=computer/create'),'class' => 'btn btn-success','id'=>'modalButton']); } ?>
    </p>
    <?php
         Modal::begin([
@@ -151,7 +153,8 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
 			           }
            ],
            [   'class' => 'yii\grid\ActionColumn', 
-                'template' => '{view} {update} {delete}',
+                // 'visible' => (Yii::$app->user->identity->isAdmin),
+                'template' => Yii::$app->user->identity->isAdmin ? '{view} {update} {delete}' : '{view}',
                 'headerOptions' => ['width' => '12%', 'class' => 'activity-view-link',],        
                     'contentOptions' => ['class' => 'padding-left-5px', 'align' => 'middle', 'noWrap' => true],
 

@@ -51,8 +51,12 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
             <ul class="dropdown-menu dropdown-user">
                         <li><a href="?r=user/settings/profile"><i class="fa fa-user fa-fw"></i> ข้อมูลส่วนตัว</a>
                         </li>
+                        <?php
+                        if (Yii::$app->user->identity->isAdmin){
+                        ?>
                         <li><a href="?r=setting"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
                         </li>
+                        <?php } ?>
                         <li class="divider"></li>
                         <li><a href="<?= Url::to(['/user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
                         </li>
@@ -70,9 +74,17 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                        <li><a href="?r=computer/index" <?php if(@addslashes($_GET['r']) == "computer/index"){ echo 'class="active"';}?>><i class="fa fa-desktop fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์ </a></li>
                        <li><a href="?r=card/index" <?php if(@addslashes($_GET['r']) == "card/index"){ echo 'class="active"';}?>><i class="fa fa-edit fa-fw"></i> ใบส่งซ่อม </a></li>
                        <li><a href="?r=card/report" <?php if(@addslashes($_GET['r']) == "card/report"){ echo 'class="active"';}?>><i class="fa fa-list fa-fw"></i> รายการส่งซ่อม</a></li>
-                       <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก <span class="badge pull-right" id="member_count">2</span></a></li>
+                       <?php
+                        if (Yii::$app->user->identity->isAdmin){
+                       ?>
+                       <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก <span class="badge btn-success pull-right" id="member_count"><?=\dektrium\user\models\User::find()->count();?></span></a></li>
+                       <?php } ?>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
+                       <?php
+                        if (Yii::$app->user->identity->isAdmin){
+                       ?>
                        <li><a href="?r=setting" <?php if(@addslashes($_GET['r']) == "setting"){ echo 'class="active"';}?>><i class="fa fa-gear  fa-fw"></i> ตั้งค่า </a></li>
+                       <?php } ?>
                        <li><a href="<?= Url::to(['/user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ </a></li>
                        <?php } else {
                             echo '<li><a href="?r=user/security/login" ';
