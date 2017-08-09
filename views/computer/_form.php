@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AssetMaster */
@@ -27,7 +28,7 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-4"><?= $form->field($model, 'floorno')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-4"><?= $form->field($model, 'roomno')->textInput(['maxlength' => true]) ?></div>
-        <div class="col-md-4"><?= $form->field($model, 'groupid')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-md-4"><?= $form->field($model, 'groupid')->dropDownList(ArrayHelper::map(app\models\AssetGroup::find()->asArray()->all(), 'groupid', 'description'),['prompt'=>'--เลือกประเภทครุภัณฑ์--']) ?></div>
     </div>
 
     <div class="row">
@@ -51,7 +52,7 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-4"><?= $form->field($model, 'receive_date')->textInput() ?></div>
         <div class="col-md-4"><?= $form->field($model, 'bud_id')->textInput(['maxlength' => true]) ?></div>
-        <div class="col-md-4"><?= $form->field($model, 'a_status')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-md-4"><?= $form->field($model, 'a_status')->dropDownList(ArrayHelper::map(app\models\AssetAstatus::find()->asArray()->all(), 'a_status', 'descriptions'),['prompt'=>'--เลือกสถานะ--']) ?></div>
     </div>
 
     <div class="row">
