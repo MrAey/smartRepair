@@ -67,8 +67,8 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                        <?php
                         if (!Yii::$app->user->isGuest){
                        ?>
-                       <li><a href="?r=computer" <?php if(@addslashes($_GET['r']) == "computer"){ echo 'class="active"';}?>><i class="fa fa-desktop fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์ </a></li>
-                       <li><a href="?r=card/create" <?php if(@addslashes($_GET['r']) == "card/create"){ echo 'class="active"';}?>><i class="fa fa-edit fa-fw"></i> ใบส่งซ่อม </a></li>
+                       <li><a href="?r=computer/index" <?php if(@addslashes($_GET['r']) == "computer/index"){ echo 'class="active"';}?>><i class="fa fa-desktop fa-fw"></i> ครุภัณฑ์คอมพิวเตอร์ </a></li>
+                       <li><a href="?r=card/index" <?php if(@addslashes($_GET['r']) == "card/index"){ echo 'class="active"';}?>><i class="fa fa-edit fa-fw"></i> ใบส่งซ่อม </a></li>
                        <li><a href="?r=card/report" <?php if(@addslashes($_GET['r']) == "card/report"){ echo 'class="active"';}?>><i class="fa fa-list fa-fw"></i> รายการส่งซ่อม</a></li>
                        <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก <span class="badge pull-right" id="member_count">2</span></a></li>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
