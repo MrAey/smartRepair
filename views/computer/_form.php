@@ -43,7 +43,7 @@ use yii\helpers\ArrayHelper;
     </div>
 
     <div class="row">
-        <div class="col-md-4"><?= $form->field($model, 'catagory')->dropDownList($model->isNewRecord ? ['0'=>''] : ArrayHelper::map(app\models\AssetAcatagory::find()->asArray()->all(), 'catagory', 'descriptions'),[
+        <div class="col-md-4"><?= $form->field($model, 'catagory')->dropDownList($model->isNewRecord ? ['0'=>''] : ArrayHelper::map(app\models\AssetAcatagory::find()->where(['=','groupid',$model['groupid']])->asArray()->all(), 'catagory', 'descriptions'),[
                 'prompt'=>'--เลือกหมวดครุภัณฑ์--',
                 'id' => 'catagory'
             ]) ?></div>

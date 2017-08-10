@@ -77,7 +77,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                        <?php
                         if (Yii::$app->user->identity->isAdmin){
                        ?>
-                       <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก <span class="badge btn-success pull-right" id="member_count"><?=\dektrium\user\models\User::find()->count();?></span></a></li>
+                       <li><a href="?r=member" <?php if(@addslashes($_GET['r']) == "member"){ echo 'class="active"';}?>><i class="fa fa-users fa-fw"></i> สมาชิก <span class="badge pull-right" style="background-color: #468847;hover{background-color: #356635;}" id="member_count"><?=\dektrium\user\models\User::find()->count();?></span></a></li>
                        <?php } ?>
                        <li><a href="?r=report" <?php if(@addslashes($_GET['r']) == "report"){ echo 'class="active"';}?>><i class="fa fa-pie-chart fa-fw"></i> รายงาน </a></li>
                        <?php

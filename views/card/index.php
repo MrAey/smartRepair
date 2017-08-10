@@ -29,7 +29,7 @@ $this->title = 'ใบส่งซ่อม';
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
       <ul class="nav navbar-nav">
-        <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;"><i class="fa fa-plus"></i> เพิ่มใบส่งซ่อม/เคลม</a></li>
+        <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;"><i class="fa fa-plus"></i> เพิ่มใบส่งซ่อม</a></li>
       </ul>
       
 	  	<form class="navbar-form from-group navbar-right" role="search" method="get" action="?p=search">
