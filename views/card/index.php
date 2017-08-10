@@ -1,5 +1,7 @@
 <?php
 use yii\bootstrap\Modal;
+use yii\helpers\Url;
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 $this->title = 'ใบส่งซ่อม';
 ?>
@@ -10,35 +12,17 @@ $this->title = 'ใบส่งซ่อม';
 </div>
 <?php
 	Modal::begin([
-		'id' => 'myModal',
-		'header' => '<h3 class="modal-title"><i class="fa fa-pencil"></i> เขียนใบส่งซ่อม</h3>',
-		'headerOptions' => ['style' => 'color: #fff;background: #428bca;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
-	]);
-	Modal::end();
+            'header'=>'',
+            'headerOptions' => ['style' => 'background: #428bca;border-top-left-radius: 5px;border-top-right-radius: 5px;'],
+            'id'=>'modal',
+            'size'=>'modal-lg',
+            'options'=>['tabindex' => false],
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+        ]);
+        echo "<div id='modalContent'></div>";
+        Modal::end();
+  
 ?>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><i class="fa fa-edit"></i></a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-      <ul class="nav navbar-nav">
-        <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;"><i class="fa fa-plus"></i> เพิ่มใบส่งซ่อม</a></li>
-      </ul>
-      
-	  	<form class="navbar-form from-group navbar-right" role="search" method="get" action="?p=search">
-	 
-	    <input type="text" class="form-control" name="q" placeholder="ระบุชื่อ/ฝ่ายหรือเลขที่ใบส่งซ่อม เพื่อค้นหา" size="50" autofocus autocomplete="off">
-	    <input type="hidden" name="p" id="p" value="search" >
-	 
-		</form>
-	</div>
- 
-  </div>
-</nav>
+<div class="well well-sm">
+<?=Html::button('<i class="glyphicon glyphicon-plus"></i> เพิ่มใบส่งซ่อม',['value'=>  Url::to('index.php?r=card/create'),'class' => 'btn btn-success','id'=>'modalButton', 'style'=>'cursor:pointer;']);?>
+</div>

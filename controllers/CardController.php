@@ -6,7 +6,7 @@ class CardController extends \yii\web\Controller
 {
     public function actionCreate()
     {
-        return $this->render('create');
+        return $this->renderAjax('create');
     }
 
     public function actionIndex()
