@@ -18,6 +18,16 @@ $config = [
         ],
     ],
     'components' => [
+        'session' => [
+            'class' => 'yii\web\DbSession',
+            'writeCallback' => function($session){
+                return [
+                    'user_id' => Yii::$app->user->id
+                ];
+            }
+            // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
+            // 'sessionTable' => 'my_session', // session table name. Defaults to 'session'.
+        ],
         'assetManager' => [
             'bundles' => [
                 'yii\bootstrap\BootstrapAsset' => [
