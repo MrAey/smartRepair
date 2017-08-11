@@ -25,7 +25,7 @@ $this->title = 'ครุภัณฑ์คอมพิวเตอร์';
       </div>
   </div> -->
    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-   <p>
+   <p class="well well-sm">
        <?php
         if (Yii::$app->user->identity->isAdmin){ 
             echo Html::button('<i class="glyphicon glyphicon-plus"></i> เพิ่มครุภัณฑ์คอมพิวเตอร์',['value'=>  Url::to('index.php?r=computer/create'),'class' => 'btn btn-success','id'=>'modalButton']); } ?>
