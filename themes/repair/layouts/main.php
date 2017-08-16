@@ -4,6 +4,8 @@ use yii\helpers\Url;
 use app\themes\repair\RepairAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\widgets\Menu;
+use app\themes\repair\widgets\MetisMenu;
 
 RepairAsset::register($this);
 $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/assets'); 
@@ -66,7 +68,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
             <!-- /.navbar-top-links -->
             <div class="navbar-default sidebar" role="navigation">
               <div class="sidebar-nav navbar-collapse collapse">
-                    <ul class="nav" id="side-menu">
+                    <!-- <ul class="nav" id="side-menu">
                        <li><a href="index.php" <?php if(@addslashes($_GET['r']) == ""){ echo 'class="active"';}?>><i class="fa fa-home fa-fw"></i> หน้าแรก </a></li>
                        <?php
                         if (!Yii::$app->user->isGuest){
@@ -92,8 +94,48 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                             echo '><i class="fa fa-users fa-fw"></i> เข้าสู่ระบบ </a></li>'; 
                         }?>
                     </ul> 
-                    <div style="color:#CCC; text-align:center; padding-top:10px;">&copy;&nbsp;<?php echo @date("Y");?>&nbsp;</div>
+                    <div style="color:#CCC; text-align:center; padding-top:10px;">&copy;&nbsp;<?php echo @date("Y");?>&nbsp;</div> -->
+                  
+<?php
+  $datas = Yii::$app->db->createCommand("select * from menus")->queryAll();
+
+  $list_menu = [];
+
+  foreach ($datas as $item) {
+    if (isset($item['visible']) && !$item['visible']) {
+                unset($list_menu['id']);
+                continue;
+    }
+    $submenu = Yii::$app->db->createCommand("select s.* from menus m left join sub_menu s on s.sub_id=m.id where id=".$item['id'])->queryAll();
+            $list_menu[$item['id']] = $item;
+            
+            foreach ($submenu as $sub) {
+              if($item['id']==$sub['sub_id']){
+                $list_menu[$item['id']]['items'] = $submenu;
+              } 
+              
+            }
+                
+           
+        }
+  // print_r($list_menu);
+  echo MetisMenu::widget([
+    'items' => $list_menu
+  ]);
+
+?>
+<ul class="nav" id="side-menu">
+<?php
+                        if (!Yii::$app->user->isGuest){
+                       ?>
+                       <li><a href="<?= Url::to(['/user/security/logout'])?>" data-method="post"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ </a></li>
+                       <?php } else {
+                            echo '<li><a href="?r=user/security/login" ';
+                            if(@addslashes($_GET['r']) == "user/security/login"){ echo 'class="active"';}
+                            echo '><i class="fa fa-users fa-fw"></i> เข้าสู่ระบบ </a></li>'; 
+                        }?>  </ul>
                 </div>
+
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->

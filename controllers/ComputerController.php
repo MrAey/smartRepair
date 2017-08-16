@@ -28,18 +28,18 @@ class ComputerController extends Controller
                     'delete' => ['GET'],
                 ],
             ],
-            // 'access' => [
-            //     'class' => AccessControl::className(),
-            //     'ruleConfig' => [
-            //         'class' => AccessRule::className(),
-            //     ],
-            //     'rules' => [
-            //         [
-            //             'allow' => true,
-            //             'roles' => ['admin'],
-            //         ],
-            //     ],
-            // ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@','admin'],
+                    ],
+                ],
+            ],
         ];
     }
 
