@@ -16,8 +16,12 @@ $config = [
             'cost' => 12,
             'admins' => ['admin']
         ],
+        'rbac' => 'dektrium\rbac\RbacWebModule',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'dektrium\rbac\components\DbManager',
+        ],
         'session' => [
             'class' => 'yii\web\DbSession',
             'writeCallback' => function($session){
