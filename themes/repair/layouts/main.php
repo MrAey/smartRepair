@@ -42,7 +42,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><b>ระบบส่งซ่อมออนไลน์</b></a>
+                <a class="navbar-brand" href="index.php"><b>ระบบคลังพัสดุและส่งซ่อมออนไลน์</b></a>
             </div>
             <!-- /.navbar-header -->
             <?php
@@ -56,7 +56,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                         <?php
                         if (Yii::$app->user->identity->isAdmin){
                         ?>
-                        <li><a href="?r=setting"><i class="fa fa-gear fa-fw"></i> ตั้งค่า</a>
+                        <li><a href="?r=setting"><i class="fa fa-gear fa-fw"></i> ตั้งค่าระบบ</a>
                         </li>
                         <?php } ?>
                         <li class="divider"></li>
