@@ -106,7 +106,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                 unset($list_menu['id']);
                 continue;
     }
-    $submenu = Yii::$app->db->createCommand("select s.* from menus m left join sub_menu s on s.sub_id=m.id where id=".$item['id'])->queryAll();
+    $submenu = Yii::$app->db->createCommand("select s.* from menus m left join sub_menu s on s.sub_id=m.id where m.id=".$item['id'])->queryAll();
             $list_menu[$item['id']] = $item;
             
             foreach ($submenu as $sub) {
