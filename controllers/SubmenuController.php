@@ -8,6 +8,8 @@ use app\models\SubMenuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use dektrium\user\filters\AccessRule;
 
 /**
  * SubMenuController implements the CRUD actions for SubMenu model.
@@ -24,6 +26,18 @@ class SubmenuController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['Administrator'],
+                    ],
                 ],
             ],
         ];
