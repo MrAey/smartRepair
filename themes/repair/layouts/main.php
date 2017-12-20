@@ -93,11 +93,11 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                             if(@addslashes($_GET['r']) == "user/security/login"){ echo 'class="active"';}
                             echo '><i class="fa fa-users fa-fw"></i> เข้าสู่ระบบ </a></li>'; 
                         }?>
-                    </ul> 
-                    <div style="color:#CCC; text-align:center; padding-top:10px;">&copy;&nbsp;<?php echo @date("Y");?>&nbsp;</div> -->
+                    </ul>--> 
+                    <div style="color:#CCC; text-align:center; padding-top:10px;">&copy;&nbsp;<?php echo @date("Y");?>&nbsp;By Ctrl+X Team.</div> 
                   
 <?php
-  $datas = Yii::$app->db->createCommand("select * from menus")->queryAll();
+  $datas = Yii::$app->db->createCommand("select * from menus order by sort")->queryAll();
 
   $list_menu = [];
 
@@ -106,7 +106,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                 unset($list_menu['id']);
                 continue;
     }
-    $submenu = Yii::$app->db->createCommand("select s.* from menus m left join sub_menu s on s.sub_id=m.id where m.id=".$item['id'])->queryAll();
+    $submenu = Yii::$app->db->createCommand("select s.* from menus m left join sub_menu s on s.sub_id=m.id where m.id=".$item['id']." order by sort")->queryAll();
             $list_menu[$item['id']] = $item;
             
             foreach ($submenu as $sub) {
@@ -138,6 +138,7 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
 
                 <!-- /.sidebar-collapse -->
             </div>
+
             <!-- /.navbar-static-side -->
         </nav>
 
