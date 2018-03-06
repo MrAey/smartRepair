@@ -98,7 +98,11 @@ $asset_path = Yii::$app->assetManager->getPublishedUrl('@app/themes/repair/asset
                   
 <?php
   $datas = Yii::$app->db->createCommand("select * from menus order by sort")->queryAll();
-
+  $upsubmenu = "UPDATE sub_menu
+  SET sub_menu.badge=(SELECT if(count(asset_master.groupid)=0,NULL,count(asset_master.groupid)) AS c
+  FROM asset_master
+  WHERE asset_master.groupid=sub_menu.title)";
+  Yii::$app->db->createCommand($upsubmenu)->execute();
   $list_menu = [];
 
   foreach ($datas as $item) {
